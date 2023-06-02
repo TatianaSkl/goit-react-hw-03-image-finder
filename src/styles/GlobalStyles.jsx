@@ -4,6 +4,8 @@ import { theme } from 'styles/theme';
 export const GlobalStyles = css`
   html {
     box-sizing: border-box;
+    width: 100vw;
+    overflow-x: hidden;
     scroll-behavior: smooth;
   }
 
@@ -13,8 +15,8 @@ export const GlobalStyles = css`
       'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
     background: ${theme.colors.mainBackground};
     min-height: 100vh;
-
-    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   h1,

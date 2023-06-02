@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import 'modern-normalize';
+import 'react-toastify/dist/ReactToastify.css';
 import { Global, ThemeProvider } from '@emotion/react';
 import { App } from 'components';
 import { GlobalStyles, theme } from 'styles';

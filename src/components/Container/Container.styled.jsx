@@ -8,4 +8,8 @@ export const Container = styled.div`
 
   margin-left: auto;
   margin-right: auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 16px;
+  padding-bottom: 24px;
 `;
