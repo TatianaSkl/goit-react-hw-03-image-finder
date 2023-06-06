@@ -1,15 +1,7 @@
 import React from 'react';
 import { ToastContainer } from 'react-toastify';
 
-import {
-  Container,
-  Searchbar,
-  Loader,
-  ImageGallery,
-  ErrorMessage,
-  Button,
-  Modal,
-} from 'components';
+import { Container, Searchbar, Loader, ImageGallery, ErrorMessage, Button } from 'components';
 import { fetchGallery } from '../../service/gallery-api';
 
 export class App extends React.Component {
@@ -21,8 +13,6 @@ export class App extends React.Component {
     images: [],
     error: null,
     isLoading: false,
-    largeImage: {},
-    showModal: false,
   };
 
   async componentDidUpdate(_, prevState) {
@@ -55,31 +45,20 @@ export class App extends React.Component {
     this.setState(prevState => ({ page: prevState.page + 1 }));
   };
 
-  handleOpenModal = image => {
-    const largeImage = { url: image.largeImageURL, alt: image.tags };
-    this.setState({ largeImage, showModal: true });
-  };
-
-  handleCloseModal = () => {
-    this.setState({ showModal: false });
-  };
-
   render() {
-    const { images, error, page, totalPages, isLoading, showModal, largeImage } = this.state;
+    const { images, error, page, totalPages, isLoading } = this.state;
     const showLoadMoreButton = images.length !== 0 && page < totalPages;
     return (
       <Container>
         <Searchbar onSubmit={this.handleSearch} />
         {isLoading && <Loader />}
-        <ImageGallery images={images} handleOpenModal={this.handleOpenModal} />
+        <ImageGallery images={images} />
         {showLoadMoreButton && (
           <Button onClick={this.handleLoadMore} disabled={isLoading}>
             {isLoading ? 'Loading...' : 'Load More'}
           </Button>
         )}
         {error && <ErrorMessage>{error}</ErrorMessage>}
-
-        {showModal && <Modal image={largeImage} onClose={this.handleCloseModal} />}
         <ToastContainer autoClose={3000} />
       </Container>
     );

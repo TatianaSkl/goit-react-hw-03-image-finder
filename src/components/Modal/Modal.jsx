@@ -22,7 +22,7 @@ export class Modal extends React.Component {
   };
 
   render() {
-    const { url, alt } = this.props.image;
+    const { url, alt } = this.props;
     return (
       <Overlay onClick={this.onOverlayClickClose}>
         <ModalImage>
@@ -34,9 +34,7 @@ export class Modal extends React.Component {
 }
 
 Modal.propTypes = {
-  image: PropTypes.shape({
-    url: PropTypes.string.isRequired,
-    alt: PropTypes.string.isRequired,
-  }).isRequired,
+  url: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired,
   onClose: PropTypes.func.isRequired,
 };
